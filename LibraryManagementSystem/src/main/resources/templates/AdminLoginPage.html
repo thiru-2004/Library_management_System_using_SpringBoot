@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdminLoginPage</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<style>
+/* Background Styling */
+body {
+    background: #f0f8ff; /* A slightly lighter, calming background color */
+    overflow: hidden; /* Hide anything that goes outside the viewport */
+    height: 100vh;
+    margin: 0;
+    position: relative; /* Needed for positioning the absolute background */
+}
+
+/* Container for animated books */
+.animated-books-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through to content below */
+    z-index: -1; /* Place behind all content */
+    overflow: hidden;
+}
+
+.animated-books-container img {
+    position: absolute;
+    width: 80px; /* Default size for books */
+    height: auto;
+    opacity: 0; /* Start invisible */
+    animation: floatBooks 25s linear infinite; /* Animation applied to all images */
+}
+
+/* Individual book variations for different starting positions, sizes, and delays */
+/* Ramayanam */
+.animated-books-container img:nth-child(1) {
+    left: 10%;
+    width: 100px;
+    animation-delay: 0s;
+    animation-duration: 22s;
+}
+/* Mahabharatham */
+.animated-books-container img:nth-child(2) {
+    left: 40%;
+    width: 120px;
+    animation-delay: 5s;
+    animation-duration: 28s;
+}
+/* English Book 1 */
+.animated-books-container img:nth-child(3) {
+    left: 70%;
+    width: 90px;
+    animation-delay: 10s;
+    animation-duration: 20s;
+}
+/* English Book 2 */
+.animated-books-container img:nth-child(4) {
+    left: 25%;
+    width: 70px;
+    animation-delay: 15s;
+    animation-duration: 26s;
+}
+/* Ramayanam (another instance) */
+.animated-books-container img:nth-child(5) {
+    left: 85%;
+    width: 110px;
+    animation-delay: 3s;
+    animation-duration: 24s;
+}
+/* Mahabharatham (another instance) */
+.animated-books-container img:nth-child(6) {
+    left: 55%;
+    width: 95px;
+    animation-delay: 8s;
+    animation-duration: 30s;
+}
+/* English Book 3 */
+.animated-books-container img:nth-child(7) {
+    left: 15%;
+    width: 130px;
+    animation-delay: 12s;
+    animation-duration: 27s;
+}
+
+
+/* Keyframe Animation Definition */
+@keyframes floatBooks {
+    0% {
+        transform: translateY(100vh) rotate(0deg); /* Start at the bottom of the viewport */
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Fade in as they enter */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-20%) rotate(360deg); /* Float upwards and rotate */
+        opacity: 0; /* Fade out as they leave the top */
+    }
+}
+
+/* Ensure the main content stays on top of the background */
+.card {
+    z-index: 1; 
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background for the card */
+}
+
+</style>
+</head>
+<body>
+
+    <div class="animated-books-container">
+        <img src="https://m.media-amazon.com/images/I/71MYRadga2L._SL1000_.jpg" alt="Ramayanam Book">
+        <img src="http://rukmini1.flixcart.com/image/300/300/kkyc9zk0/regionalbooks/u/b/s/mahabharatham-telugubook-vachanam-original-imagy7y3htnygwke.jpeg" alt="Mahabharatham Book">
+        <img src="https://cdn.gramedia.com/uploads/items/9786020496481_Ego_is_The_En.jpg" alt="English Book 1">
+        <img src="https://m.media-amazon.com/images/I/81qcFPkOgKL._SL1500_.jpg" alt="English Book 2">
+        <img src="https://m.media-amazon.com/images/I/71MYRadga2L._SL1000_.jpg" alt="Ramayanam Book">
+        <img src="http://rukmini1.flixcart.com/image/300/300/kkyc9zk0/regionalbooks/u/b/s/mahabharatham-telugubook-vachanam-original-imagy7y3htnygwke.jpeg" alt="Mahabharatham Book">
+        <img src="https://m.media-amazon.com/images/I/81qcFPkOgKL._SL1500_.jpg" alt="English Book 3">
+    </div>
+
+    <div class="container my-5">
+		<div class="row justify-content-center">
+			<div class="col-md-5 col-lg-4">
+				<div class="card shadow-lg">
+					<div class="card-header bg-dark text-white text-center">
+						<h1 class="h4 mb-0">ADMIN LOGIN</h1>
+					</div>
+					<div class="card-body">
+						<form action="adminlogin" method="POST">
+							<div class="mb-3">
+								<label for="adminid" class="form-label visually-hidden">Admin ID</label>
+								<input 
+									type="text" 
+									class="form-control" 
+									id="adminid"
+									placeholder="Admin ID" 
+									name="adminid" 
+									required>
+							</div>
+
+							<div class="mb-3">
+								<label for="password" class="form-label visually-hidden">Password</label>
+								<input 
+									type="password" 
+									class="form-control" 
+									id="password"
+									placeholder="Password" 
+									name="password"
+									required>
+							</div>
+							
+							<div class="d-grid">
+								<button type="submit" class="btn btn-dark btn-lg">Login</button>
+							</div>
+						</form>
+					</div>
+					<div class="card-footer text-center text-muted small">
+						Please log in to continue.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
